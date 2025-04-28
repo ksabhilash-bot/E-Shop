@@ -1,5 +1,5 @@
 {
-  "homepage": "https://github.com/ksabhilash-bot/E-Shop.git",
+  "homepage": "https://github.com/ksabhilash-bot/E-Shop",
 
   "name": "e-commerce",
   "private": true,
@@ -7,7 +7,7 @@
   "type": "module",
   "scripts": {
      "predeploy": "npm run build",
-  "deploy": "gh-pages -d build",
+  "deploy": "gh-pages -d dist",
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
