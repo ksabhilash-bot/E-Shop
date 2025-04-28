@@ -13,11 +13,11 @@ const App = () => {
     <Router>
       <div className="flex flex-col min-h-screen">
         <Header />
-        
+
         
         <main className="flex-grow flex items-center justify-center">
           <Routes>
-            <Route path="/" element={<Hero />} />
+            <Route path="" element={<Hero />} />
             <Route path="/shop" element={<Shop />} />
             <Route path="/cart" element={<Cart />} />
             <Route path='/login' element={<Login/>}/>
