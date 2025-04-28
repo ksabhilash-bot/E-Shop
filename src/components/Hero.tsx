@@ -22,7 +22,7 @@ const childVariants = {
 const Hero = () => {
   return (
     <motion.div 
-      className="bg-[url('/back.jpg')] bg-cover bg-center h-[80vh] w-full flex items-center justify-center mt-2"
+      className="bg-[url('E-Shop/back.jpg')] bg-cover bg-center h-[80vh] w-full flex items-center justify-center mt-2"
       aria-label="Background image"
       variants={containerVariants}
       initial="hidden"
