@@ -1,0 +1,20 @@
+@import "tailwindcss";
+@font-face {
+    font-family: 'LetMeDown';
+    src: url('/src/assets/LetMeDownDemoRegular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+  .font-letme {
+    font-family: 'LetMeDown', cursive;
+  }
+  @font-face {
+    font-family: 'Christian';
+    src: url('/src/assets/Christian\ Friends.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+  .font-christian {
+    font-family: 'Christian', cursive;
+  }
+ 
