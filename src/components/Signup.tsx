@@ -1,37 +1,49 @@
-import { useState } from 'react';
+import { useState, ChangeEvent, FormEvent } from 'react';
 import { Mail, User, Phone, Home, Lock, Loader2 } from 'lucide-react';
 
-function App() {
-  const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-    mobile: '',
-    address: '',
-    password: '',
-    confirmPassword: ''
-  });
-  
-  const [errors, setErrors] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-    mobile: '',
-    address: '',
-    password: '',
-    confirmPassword: ''
-  });
-  
-  const [isSubmitting, setIsSubmitting] = useState(false);
+interface FormData {
+  firstName: string;
+  lastName: string;
+  email: string;
+  mobile: string;
+  address: string;
+  password: string;
+  confirmPassword: string;
+}
 
-  const handleChange = (e) => {
+interface Errors extends FormData {}
+
+function Signup() {
+  const [formData, setFormData] = useState<FormData>({
+    firstName: '',
+    lastName: '',
+    email: '',
+    mobile: '',
+    address: '',
+    password: '',
+    confirmPassword: ''
+  });
+
+  const [errors, setErrors] = useState<Errors>({
+    firstName: '',
+    lastName: '',
+    email: '',
+    mobile: '',
+    address: '',
+    password: '',
+    confirmPassword: ''
+  });
+
+  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({
       ...prev,
       [name]: value
     }));
-    
-    if (errors[name]) {
+
+    if (errors[name as keyof Errors]) {
       setErrors(prev => ({
         ...prev,
         [name]: ''
@@ -39,9 +51,9 @@ function App() {
     }
   };
 
-  const validateForm = () => {
+  const validateForm = (): boolean => {
     let isValid = true;
-    const newErrors = {
+    const newErrors: Errors = {
       firstName: '',
       lastName: '',
       email: '',
@@ -50,17 +62,17 @@ function App() {
       password: '',
       confirmPassword: ''
     };
-    
+
     if (!formData.firstName.trim()) {
       newErrors.firstName = 'First name is required';
       isValid = false;
     }
-    
+
     if (!formData.lastName.trim()) {
       newErrors.lastName = 'Last name is required';
       isValid = false;
     }
-    
+
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!formData.email.trim()) {
       newErrors.email = 'Email is required';
@@ -69,7 +81,7 @@ function App() {
       newErrors.email = 'Please enter a valid email address';
       isValid = false;
     }
-    
+
     if (!formData.mobile.trim()) {
       newErrors.mobile = 'Mobile number is required';
       isValid = false;
@@ -77,12 +89,12 @@ function App() {
       newErrors.mobile = 'Please enter a valid mobile number';
       isValid = false;
     }
-    
+
     if (!formData.address.trim()) {
       newErrors.address = 'Address is required';
       isValid = false;
     }
-    
+
     if (!formData.password) {
       newErrors.password = 'Password is required';
       isValid = false;
@@ -93,7 +105,7 @@ function App() {
       newErrors.password = 'Password must contain uppercase, lowercase and numbers';
       isValid = false;
     }
-    
+
     if (!formData.confirmPassword) {
       newErrors.confirmPassword = 'Please confirm your password';
       isValid = false;
@@ -101,18 +113,18 @@ function App() {
       newErrors.confirmPassword = 'Passwords do not match';
       isValid = false;
     }
-    
+
     setErrors(newErrors);
     return isValid;
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    
+
     if (!validateForm()) return;
-    
+
     setIsSubmitting(true);
-    
+
     try {
       await new Promise(resolve => setTimeout(resolve, 1500));
       alert('Registration successful!');
@@ -343,4 +355,4 @@ function App() {
   );
 }
 
-export default App;
+export default Signup;

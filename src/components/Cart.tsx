@@ -4,15 +4,6 @@ import { RootState } from '../store/store';
 import { removeFromCart } from '../store/cartSlice';
 import { useNavigate } from 'react-router-dom';
 
-interface CartItem {
-  id: number;
-  title: string;
-  price: number;
-  description: string;
-  category: string;
-  image: string;
-  quantity: number;
-}
 
 const Cart: React.FC = () => {
   const cartItems = useSelector((state: RootState) => state.cart.items);
@@ -24,7 +15,6 @@ const Cart: React.FC = () => {
   };
 
   const handleBuy = () => {
-    // Navigate to order page with all cart items
     navigate('/order');
   };
 
