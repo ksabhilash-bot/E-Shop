@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { HashRouter as Router, Routes, Route } from 'react-router-dom'
 import Header from './components/Header'
 import Footer from './components/Footer'
 import Hero from './components/Hero'
@@ -13,6 +13,7 @@ const App = () => {
     <Router>
       <div className="flex flex-col min-h-screen">
         <Header />
+        
         
         <main className="flex-grow flex items-center justify-center">
           <Routes>
